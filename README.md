@@ -80,7 +80,7 @@ To replicate the analysis:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/yourusername/CSRIC_Communications_Security.git
+   git clone https://github.com/Ekhwatenge/CSRIC-Best-Practices/tree/main
 
 -Ensure that R and the required packages (e.g., dplyr, ggplot2, reshape2) are installed.
 -Run the analysis scripts in the scripts folder sequentially or open and render CSRIC_Analysis_Report.Rmd in RStudio.
