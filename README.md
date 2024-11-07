@@ -68,8 +68,8 @@ The repository includes the following files:
 Insights from the analysis include:
 
 - **High-priority best practices** are more common in public safety and disaster management roles.
-- **Wireless and mobile networks** are heavily associated with high-priority recommendations, reflecting the importance of security in these areas.
-- Significant relationships exist between **priority level** and **industry role**, particularly for network operators and service providers.
+- **Wireless and mobile networks** are associated with high-priority recommendations, reflecting the importance of security in these areas.
+- A relationships exist between **priority level** and **industry role**,for network operators and service providers.
 
 For detailed results and visualizations, see the [CSRIC_Analysis_Report.pdf](CSRIC_Analysis_Report.pdf).
 
