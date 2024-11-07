@@ -3,7 +3,7 @@
 **Author**: Elvira Khwatenge  
 **Date**: `r Sys.Date()`
 
-This project analyzes the **CSRIC Best Practices** dataset with a focus on understanding communications security and reliability issues. It aims to provide insights for policy advisors working in digital and national security, such as those within government bodies (e.g., Department of Homeland Security, EU’s European Union Agency for Cybersecurity).
+This project analyzes the **CSRIC Best Practices** dataset with a focus on understanding communications security and reliability issues. It provides insights for policy advisors working in digital and national security, such as those within government bodies (e.g., Department of Homeland Security, EU’s European Union Agency for Cybersecurity).
 
 ## Table of Contents
 
@@ -19,11 +19,11 @@ This project analyzes the **CSRIC Best Practices** dataset with a focus on under
 
 ## Introduction
 
-The analysis conducted in this project explores key insights from CSRIC’s communications best practices, focusing on priority areas like public safety, disaster management, and network resilience. This data is valuable for policymakers to develop informed recommendations for enhancing communication security and reliability.
+The analysis conducted in this project explores key insights from CSRIC’s communications best practices on priority areas like public safety, disaster management, and network resilience for policymakers to develop informed recommendations for enhancing communication security and reliability.
 
 ## Dataset
 
-The dataset used in this analysis was obtained from the **CSRIC Best Practices Search Tool** and includes fields like priority level, network types, industry roles, and public safety relevance.
+The dataset used in this analysis was obtained from the **CSRIC Best Practices Search Tool** and includes priority level, network types, industry roles, and public safety relevance fields.
 
 - **Source**: Communications Security, Reliability and Interoperability Council (CSRIC)
 - **Content**: Priority levels, network types, industry roles, keywords, and public safety flags
