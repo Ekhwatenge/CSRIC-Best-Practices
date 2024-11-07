@@ -1,0 +1,170 @@
+---
+title: "CSRIC_Analysis_Report.Rmd"
+author: "Elvira Khwatenge"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+ be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+# Load necessary libraries
+library(dplyr)
+library(ggplot2)
+
+# Load the dataset (update the path as necessary)
+csric_data <- read.csv("CSRIC_Best_Practices_Raw.csv.csv")
+
+# Preview the data
+head(csric_data)
+```
+
+
+## Data cleaning
+
+3.1 Checking for Missing Values
+
+```{r, echo=FALSE}
+# Check for missing values
+missing_values <- colSums(is.na(csric_data))
+print(missing_values)
+
+```
+
+3.2 Removing Duplicates and Setting Data Types
+```{r}
+# Remove duplicates
+csric_data <- csric_data[!duplicated(csric_data), ]
+
+# Convert relevant columns to factors for categorical analysis
+csric_data$Priority <- as.factor(csric_data$Priority)
+# Print column names to confirm exact names
+colnames(csric_data)
+csric_data$Public.Safety.and.Disaster <-as.factor(csric_data$Public.Safety.and.Disaster)
+csric_data$Network.Operator <- as.factor(csric_data$Network.Operator)
+csric_data$Industry_Role.s. <- as.factor(csric_data$Industry.Role.s.)
+
+```
+4. Exploratory Data Analysis (EDA)
+4.1 Summary Statistics
+```{r}
+# Display summary statistics for key columns
+summary(csric_data)
+```
+
+4.2 Distribution of Priority Levels
+```{r}
+# Plot the distribution of Priority Levels
+ggplot(csric_data, aes(x = Priority)) + 
+  geom_bar() + 
+  ggtitle("Distribution of Priority Levels") +
+  xlab("Priority Level") +
+  ylab("Count") +
+  theme_minimal()
+```
+4.3 Network Type Distribution
+```{r}
+# Plot the distribution of Network.Operator
+ggplot(csric_data, aes(x = Network.Operator)) + 
+  geom_bar() + 
+  ggtitle("Distribution of Network Operator") +
+  xlab("Network OPerator") +
+  ylab("Count") +
+  theme_minimal()
+```
+4.4 Industry Role Distribution
+```{r}
+# Plot the distribution of Industry Roles
+ggplot(csric_data, aes(x = Industry.Role.s.)) + 
+  geom_bar() + 
+  ggtitle("Distribution of Industry Roles") +
+  xlab("Industry Role") +
+  ylab("Count") +
+  theme_minimal()
+```
+
+5. Statistical Analysis
+5.1 Chi-Squared Test for Priority Level and Network Operator
+```{r}
+# Chi-squared test for association between Priority Level and Network Operators
+table_priority_network <- table(csric_data$Priority, csric_data$Network.Operator)
+chi_test_priority_network <- chisq.test(table_priority_network)
+chi_test_priority_network
+```
+
+
+5.2 Chi-Squared Test for Priority Level and Industry Role
+```{r}
+
+# Chi-squared test for association between Priority Level and Industry Role
+table_priority_role <- table(csric_data$Priority, csric_data$Industry.Role.s.)
+chi_test_priority_role <- chisq.test(table_priority_role)
+chi_test_priority_role
+```
+
+6. Visualizing Relationships
+6.1 Heatmap of Priority Level and Network Operator Association
+```{r}
+
+library(reshape2)
+heatmap_data_network <- as.data.frame(table_priority_network)
+ggplot(heatmap_data_network, aes(x = Var1, y = Var2, fill = Freq)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "blue") +
+  labs(title = "Heatmap of Priority Level and Network Type", x = "Priority Level", y = "Network Type") +
+  theme_minimal()
+```
+6.2 Heatmap of Priority Level and Industry Role Association
+```{r}
+heatmap_data_role <- as.data.frame(table_priority_role)
+ggplot(heatmap_data_role, aes(x = Var1, y = Var2, fill = Freq)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "blue") +
+  labs(title = "Heatmap of Priority Level and Industry Role", x = "Priority Level", y = "Industry Role") +
+  theme_minimal()
+```
+7. Conclusion
+The analysis of the CSRIC Best Practices dataset provides insights into priority recommendations and the distribution of practices across network operators, industry roles, and public safety aspects. Below are the summary findings:
+
+a)Distribution of Priority Levels
+
+The majority of best practices were found to have lower or medium priority levels, with a smaller subset designated as high priority.
+High-priority recommendations are predominantly associated with public safety and cybersecurity domains, aligning with the nature of these areas in communications infrastructure.
+
+b)Network Operator and Priority Level Association
+
+An association was observed between network operators and priority levels, for practices linked to mobile and wireless networks.
+Network operators frequently associated with higher priority recommendations include wireless, mobile, and satellite networks, reflecting the high security and reliability requirements in these areas.
+Policy advisors should prioritize guidelines for wireless and mobile operators to reinforce security and resilience in these communication infrastructures.
+
+c)Industry Role Distribution
+
+Analysis of industry roles revealed that network operators and service providers are most frequently cited, indicating their central role in implementing best practices.
+Public safety entities and government roles also play an important part concerning practices relevant to disaster management and emergency response therefore policies should continue to emphasize collaboration between public and private sectors to maintain a robust communication framework.
+
+d)Chi-Squared Tests and Heatmap Visualizations
+
+Chi-squared tests confirmed relationships between priority levels and both network types and industry roles.
+Heatmap visualizations showed that high-priority best practices are concentrated among network operators and service providers, particularly in roles related to public safety and cybersecurity.
+Policy implications include reinforcing best practices for these industry roles to ensure a resilient communications network, particularly in times of crisis or exceptional strain.
+
+e)Recommendations for Policy Advisors
+
+Focus efforts on ensuring compliance and adoption of high-priority recommendations by network operators, particularly in mobile and wireless sectors.
+Develop targeted guidelines that support the integration of public safety measures across industry roles to enhance the reliability and security of communications infrastructure.
+Encourage continued collaboration between private network operators and public entities, particularly for roles directly involved in disaster management and emergency response..
+
+8. Reproducibility and Validation
+The analysis script and cleaned data file are provided for reproducibility. Run this RMarkdown document to replicate the analysis steps.
+
+```{r}
+# Save cleaned data for reproducibility (run separately to avoid overwriting)
+write.csv(csric_data, "CSRIC_Best_Practices_Cleaned.csv", row.names = FALSE)
+```

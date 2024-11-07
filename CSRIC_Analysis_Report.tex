@@ -1,0 +1,579 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={CSRIC\_Analysis\_Report.Rmd},
+  pdfauthor={Elvira Khwatenge},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{CSRIC\_Analysis\_Report.Rmd}
+\author{Elvira Khwatenge}
+\date{2024-11-07}
+
+\begin{document}
+\maketitle
+
+\hypertarget{r-markdown}{%
+\subsection{R Markdown}\label{r-markdown}}
+
+be generated that includes both content as well as the output of any
+embedded R code chunks within the document. You can embed an R code
+chunk like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load necessary libraries}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# Load the dataset (update the path as necessary)}
+\NormalTok{csric\_data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"CSRIC\_Best\_Practices\_Raw.csv.csv"}\NormalTok{)}
+
+\CommentTok{\# Preview the data}
+\FunctionTok{head}\NormalTok{(csric\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    BP.Number Priority
+## 1 11-10-5064         
+## 2 11-10-5164         
+## 3 11-11-3249         
+## 4  11-7-8548         
+## 5  11-8-8051         
+## 6  11-8-8052         
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Description
+## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       "Retired" - Network Operators, Service Providers, Property Managers, and Public Safety should alarm and monitor critical electronic equipment areas to detect parameters that are outside operating specifications (e.g., temperature, humidity).
+## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "Retired" - Network Operators, Service Providers, Equipment Suppliers, and Public Safety should establish and enforce a policy to immediately report stolen or missing company vehicles and trailers to the appropriate authorities.
+## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       "Retired" - Public Safety should  in regards to PSAPs, transfer calls to the primary PSAP for that jurisdiction and not directly to the secondary PSAP when a call should be transferred to another jurisdiction.  While transferring directly to the secondary PSAP seems a time saver, it bypasses local protocols, causing confusion and disjointed responses.
+## 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    "Retired" - Network Operators and Service Providers should follow processes similar to Appendix X when a service outage or security incident occurs.
+## 5                                                                                                                                                                                                                                                                             "Retired" - Network Operators should ensure that SS7 signaling interface points that connect to the IP Private and Corporate networks interfaces are well hardened, protected with packet filtering firewalls; and enforce strong authentication. Similar safeguards should be implemented for e-commerce applications to the SS7 network. Network Operators should implement rigorous screening on both internal and interconnecting signaling links and should investigate new, and more thorough screening capabilities.  Operators of products built on general purpose computing products should proactively monitor all security issues associated with those products and promptly apply security fixes, as necessary.  Operators should be particularly vigilant with respect to signaling traffic delivered or carried over Internet Protocol networks.  Network Operators that do employ the Public Internet for signaling, transport, or maintenance communications and any maintenance access to Network Elements should employ authentication, authorization, accountability, integrity, and confidentiality mechanisms (e.g., digital signature and encrypted VPN tunneling).
+## 6 "Retired" - Network Operators should mitigate limited SS7 authentication by enabling logging for SS7 element security related alarms on SCPs and STPs, such as: unauthorized dial up access, unauthorized logins, logging of changes and administrative access logging. Network operators should implement rigorous screening on both internal and interconnecting signaling links and should investigate new and more thorough screening capabilities. Operators of products built on general purpose computing products should proactively monitor all security issues associated with those products and promptly apply security fixes, as necessary. Operators should establish login and access controls that establish accountability for changes to node translations and configuration.  Operators should be particularly vigilant with respect to signaling traffic delivered or carried over Internet Protocol networks.  Network operators that do employ the Public Internet for signaling, transport or maintenance communications and any maintenance access to Network Elements shall employ authentication, authorization, accountability, integrity and confidentiality mechanisms (e.g. digital signature and encrypted VPN tunneling). Operators making use of dial-up connections for maintenance access to Network Elements should employ dial-back modems with screening lists. One-time tokens and encrypted payload VPNs should be the minimum.
+##                                        Network.Type.s.
+## 1 Cable; Internet/Data; Satellite; Wireless; Wireline;
+## 2 Cable; Internet/Data; Satellite; Wireless; Wireline;
+## 3 Cable; Internet/Data; Satellite; Wireless; Wireline;
+## 4 Cable; Internet/Data; Satellite; Wireless; Wireline;
+## 5                                            Wireline;
+## 6                                            Wireline;
+##                                                         Industry.Role.s.
+## 1   Service Provider; Network Operator; Public Safety; Property Manager;
+## 2 Service Provider; Network Operator; Equipment Supplier; Public Safety;
+## 3                                                         Public Safety;
+## 4                                    Service Provider; Network Operator;
+## 5                Service Provider; Network Operator; Equipment Supplier;
+## 6                                                      Network Operator;
+##                                                                     Keywords
+## 1                                       Buildings; Fire; Network Operations;
+## 2       Corporate Ethics; Physical Security Management; Policy; Supervision;
+## 3                                                                           
+## 4                                         Cyber Security; Disaster Recovery;
+## 5  Cyber Security; Encryption; Network Elements; Network Operations; Policy;
+## 6 Cyber Security; Intrusion Detection; Network Elements; Network Operations;
+##   Public.Safety.and.Disaster
+## 1                       TRUE
+## 2                       TRUE
+## 3                       TRUE
+## 4                      FALSE
+## 5                      FALSE
+## 6                      FALSE
+##                                                                                                                                                    Reference
+## 1          Reference: GR63 NEBS Requirements: Physical Protection, Telcordia, http://telecom-info.telcordia.com/site-cgi/ido/docs2.pl?ID=170086171&page=home
+## 2                                                                                                                                                           
+## 3                                                                                                                                                           
+## 4                                               IETF RFC2350, US-CERT\nNRIC BP 8074,  8075, 0561, 0599, 5092, 5239, 1001, 1002, 1004, 1006, 1009, 1010, 1016
+## 5 ITU SS7 Standards, “Securing SS7 Telecommunications Networks”, Proceedings of the 2001 IEEE Workshop on Information Assurance and Security, 5-6 June 2001.
+## 6                                                                                                                          NIIF Guidelines for SS7 Security.
+##   cable internet.Data satellite wireless wireline Service.Provider
+## 1  TRUE          TRUE      TRUE     TRUE     TRUE             TRUE
+## 2  TRUE          TRUE      TRUE     TRUE     TRUE             TRUE
+## 3  TRUE          TRUE      TRUE     TRUE     TRUE            FALSE
+## 4  TRUE          TRUE      TRUE     TRUE     TRUE             TRUE
+## 5 FALSE         FALSE     FALSE    FALSE     TRUE             TRUE
+## 6 FALSE         FALSE     FALSE    FALSE     TRUE            FALSE
+##   Network.Operator Priority..1.2.3. Equipment.Supplier Property.Manager
+## 1             TRUE               NA              FALSE             TRUE
+## 2             TRUE               NA               TRUE            FALSE
+## 3            FALSE               NA              FALSE            FALSE
+## 4             TRUE               NA              FALSE            FALSE
+## 5             TRUE               NA               TRUE            FALSE
+## 6             TRUE               NA              FALSE            FALSE
+##   Government Public.Safety
+## 1      FALSE          TRUE
+## 2      FALSE          TRUE
+## 3      FALSE          TRUE
+## 4      FALSE         FALSE
+## 5      FALSE         FALSE
+## 6      FALSE         FALSE
+\end{verbatim}
+
+\hypertarget{data-cleaning}{%
+\subsection{Data cleaning}\label{data-cleaning}}
+
+3.1 Checking for Missing Values
+
+\begin{verbatim}
+##                  BP.Number                   Priority 
+##                          0                          0 
+##                Description            Network.Type.s. 
+##                          0                          0 
+##           Industry.Role.s.                   Keywords 
+##                          0                          0 
+## Public.Safety.and.Disaster                  Reference 
+##                          0                          0 
+##                      cable              internet.Data 
+##                          0                          0 
+##                  satellite                   wireless 
+##                          0                          0 
+##                   wireline           Service.Provider 
+##                          0                          0 
+##           Network.Operator           Priority..1.2.3. 
+##                          0                        123 
+##         Equipment.Supplier           Property.Manager 
+##                          0                          0 
+##                 Government              Public.Safety 
+##                          0                          0
+\end{verbatim}
+
+3.2 Removing Duplicates and Setting Data Types
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove duplicates}
+\NormalTok{csric\_data }\OtherTok{\textless{}{-}}\NormalTok{ csric\_data[}\SpecialCharTok{!}\FunctionTok{duplicated}\NormalTok{(csric\_data), ]}
+
+\CommentTok{\# Convert relevant columns to factors for categorical analysis}
+\NormalTok{csric\_data}\SpecialCharTok{$}\NormalTok{Priority }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(csric\_data}\SpecialCharTok{$}\NormalTok{Priority)}
+\CommentTok{\# Print column names to confirm exact names}
+\FunctionTok{colnames}\NormalTok{(csric\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "BP.Number"                  "Priority"                  
+##  [3] "Description"                "Network.Type.s."           
+##  [5] "Industry.Role.s."           "Keywords"                  
+##  [7] "Public.Safety.and.Disaster" "Reference"                 
+##  [9] "cable"                      "internet.Data"             
+## [11] "satellite"                  "wireless"                  
+## [13] "wireline"                   "Service.Provider"          
+## [15] "Network.Operator"           "Priority..1.2.3."          
+## [17] "Equipment.Supplier"         "Property.Manager"          
+## [19] "Government"                 "Public.Safety"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{csric\_data}\SpecialCharTok{$}\NormalTok{Public.Safety.and.Disaster }\OtherTok{\textless{}{-}}\FunctionTok{as.factor}\NormalTok{(csric\_data}\SpecialCharTok{$}\NormalTok{Public.Safety.and.Disaster)}
+\NormalTok{csric\_data}\SpecialCharTok{$}\NormalTok{Network.Operator }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(csric\_data}\SpecialCharTok{$}\NormalTok{Network.Operator)}
+\NormalTok{csric\_data}\SpecialCharTok{$}\NormalTok{Industry\_Role.s. }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(csric\_data}\SpecialCharTok{$}\NormalTok{Industry.Role.s.)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Exploratory Data Analysis (EDA) 4.1 Summary Statistics
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display summary statistics for key columns}
+\FunctionTok{summary}\NormalTok{(csric\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   BP.Number                     Priority   Description       
+##  Length:1129                        :123   Length:1129       
+##  Class :character   Critical        :191   Class :character  
+##  Mode  :character   Highly Important:350   Mode  :character  
+##                     Important       :465                     
+##                                                              
+##                                                              
+##                                                              
+##  Network.Type.s.    Industry.Role.s.     Keywords        
+##  Length:1129        Length:1129        Length:1129       
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+##                                                          
+##                                                          
+##  Public.Safety.and.Disaster  Reference           cable         internet.Data  
+##  FALSE:513                  Length:1129        Mode :logical   Mode :logical  
+##  TRUE :616                  Class :character   FALSE:228       FALSE:109      
+##                             Mode  :character   TRUE :901       TRUE :1020     
+##                                                                               
+##                                                                               
+##                                                                               
+##                                                                               
+##  satellite        wireless        wireline       Service.Provider
+##  Mode :logical   Mode :logical   Mode :logical   Mode :logical   
+##  FALSE:353       FALSE:216       FALSE:232       FALSE:257       
+##  TRUE :776       TRUE :913       TRUE :897       TRUE :872       
+##                                                                  
+##                                                                  
+##                                                                  
+##                                                                  
+##  Network.Operator Priority..1.2.3. Equipment.Supplier Property.Manager
+##  FALSE:183        Min.   :1.000    Mode :logical      Mode :logical   
+##  TRUE :946        1st Qu.:1.000    FALSE:725          FALSE:947       
+##                   Median :2.000    TRUE :404          TRUE :182       
+##                   Mean   :1.728                                       
+##                   3rd Qu.:2.000                                       
+##                   Max.   :3.000                                       
+##                   NA's   :123                                         
+##  Government      Public.Safety  
+##  Mode :logical   Mode :logical  
+##  FALSE:1069      FALSE:513      
+##  TRUE :60        TRUE :616      
+##                                 
+##                                 
+##                                 
+##                                 
+##                                                                                  Industry_Role.s.
+##  Service Provider; Network Operator;                                                     :205    
+##  Service Provider; Network Operator; Public Safety;                                      :177    
+##  Service Provider; Network Operator; Equipment Supplier; Public Safety;                  :175    
+##  Network Operator;                                                                       : 79    
+##  Service Provider; Network Operator; Public Safety; Property Manager;                    : 64    
+##  Service Provider; Network Operator; Equipment Supplier; Public Safety; Property Manager;: 62    
+##  (Other)                                                                                 :367
+\end{verbatim}
+
+4.2 Distribution of Priority Levels
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot the distribution of Priority Levels}
+\FunctionTok{ggplot}\NormalTok{(csric\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Priority)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribution of Priority Levels"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Priority Level"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Count"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{CSRIC_Analysis_Report_files/figure-latex/unnamed-chunk-5-1.pdf}
+4.3 Network Type Distribution
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot the distribution of Network.Operator}
+\FunctionTok{ggplot}\NormalTok{(csric\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Network.Operator)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribution of Network Operator"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Network OPerator"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Count"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{CSRIC_Analysis_Report_files/figure-latex/unnamed-chunk-6-1.pdf}
+4.4 Industry Role Distribution
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot the distribution of Industry Roles}
+\FunctionTok{ggplot}\NormalTok{(csric\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Industry.Role.s.)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Distribution of Industry Roles"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Industry Role"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Count"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{CSRIC_Analysis_Report_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Statistical Analysis 5.1 Chi-Squared Test for Priority Level and
+  Network Operator
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Chi{-}squared test for association between Priority Level and Network Operators}
+\NormalTok{table\_priority\_network }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(csric\_data}\SpecialCharTok{$}\NormalTok{Priority, csric\_data}\SpecialCharTok{$}\NormalTok{Network.Operator)}
+\NormalTok{chi\_test\_priority\_network }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(table\_priority\_network)}
+\NormalTok{chi\_test\_priority\_network}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  table_priority_network
+## X-squared = 5.0475, df = 3, p-value = 0.1684
+\end{verbatim}
+
+5.2 Chi-Squared Test for Priority Level and Industry Role
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Chi{-}squared test for association between Priority Level and Industry Role}
+\NormalTok{table\_priority\_role }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(csric\_data}\SpecialCharTok{$}\NormalTok{Priority, csric\_data}\SpecialCharTok{$}\NormalTok{Industry.Role.s.)}
+\NormalTok{chi\_test\_priority\_role }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(table\_priority\_role)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chisq.test(table_priority_role): Chi-squared approximation may be
+## incorrect
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chi\_test\_priority\_role}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  table_priority_role
+## X-squared = 452.06, df = 102, p-value < 2.2e-16
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Visualizing Relationships 6.1 Heatmap of Priority Level and Network
+  Operator Association
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(reshape2)}
+\NormalTok{heatmap\_data\_network }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(table\_priority\_network)}
+\FunctionTok{ggplot}\NormalTok{(heatmap\_data\_network, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Var1, }\AttributeTok{y =}\NormalTok{ Var2, }\AttributeTok{fill =}\NormalTok{ Freq)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_gradient}\NormalTok{(}\AttributeTok{low =} \StringTok{"white"}\NormalTok{, }\AttributeTok{high =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Heatmap of Priority Level and Network Type"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Priority Level"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Network Type"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{CSRIC_Analysis_Report_files/figure-latex/unnamed-chunk-10-1.pdf}
+6.2 Heatmap of Priority Level and Industry Role Association
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{heatmap\_data\_role }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(table\_priority\_role)}
+\FunctionTok{ggplot}\NormalTok{(heatmap\_data\_role, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Var1, }\AttributeTok{y =}\NormalTok{ Var2, }\AttributeTok{fill =}\NormalTok{ Freq)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tile}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_gradient}\NormalTok{(}\AttributeTok{low =} \StringTok{"white"}\NormalTok{, }\AttributeTok{high =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Heatmap of Priority Level and Industry Role"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Priority Level"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Industry Role"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{CSRIC_Analysis_Report_files/figure-latex/unnamed-chunk-11-1.pdf}
+7. Conclusion The analysis of the CSRIC Best Practices dataset provides
+insights into priority recommendations and the distribution of practices
+across network operators, industry roles, and public safety aspects.
+Below are the summary findings:
+
+a)Distribution of Priority Levels
+
+The majority of best practices were found to have lower or medium
+priority levels, with a smaller subset designated as high priority.
+High-priority recommendations are predominantly associated with public
+safety and cybersecurity domains, aligning with the nature of these
+areas in communications infrastructure.
+
+b)Network Operator and Priority Level Association
+
+An association was observed between network operators and priority
+levels, for practices linked to mobile and wireless networks. Network
+operators frequently associated with higher priority recommendations
+include wireless, mobile, and satellite networks, reflecting the high
+security and reliability requirements in these areas. Policy advisors
+should prioritize guidelines for wireless and mobile operators to
+reinforce security and resilience in these communication
+infrastructures.
+
+c)Industry Role Distribution
+
+Analysis of industry roles revealed that network operators and service
+providers are most frequently cited, indicating their central role in
+implementing best practices. Public safety entities and government roles
+also play an important part concerning practices relevant to disaster
+management and emergency response therefore policies should continue to
+emphasize collaboration between public and private sectors to maintain a
+robust communication framework.
+
+d)Chi-Squared Tests and Heatmap Visualizations
+
+Chi-squared tests confirmed relationships between priority levels and
+both network types and industry roles. Heatmap visualizations showed
+that high-priority best practices are concentrated among network
+operators and service providers, particularly in roles related to public
+safety and cybersecurity. Policy implications include reinforcing best
+practices for these industry roles to ensure a resilient communications
+network, particularly in times of crisis or exceptional strain.
+
+e)Recommendations for Policy Advisors
+
+Focus efforts on ensuring compliance and adoption of high-priority
+recommendations by network operators, particularly in mobile and
+wireless sectors. Develop targeted guidelines that support the
+integration of public safety measures across industry roles to enhance
+the reliability and security of communications infrastructure. Encourage
+continued collaboration between private network operators and public
+entities, particularly for roles directly involved in disaster
+management and emergency response..
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Reproducibility and Validation The analysis script and cleaned data
+  file are provided for reproducibility. Run this RMarkdown document to
+  replicate the analysis steps.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Save cleaned data for reproducibility (run separately to avoid overwriting)}
+\FunctionTok{write.csv}\NormalTok{(csric\_data, }\StringTok{"CSRIC\_Best\_Practices\_Cleaned.csv"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
