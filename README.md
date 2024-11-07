@@ -44,28 +44,28 @@ The repository includes the following files:
 │   ├── Statistical_Tests.R              # Script for statistical analysis
 │   ├── Visualization.R                  # Script for generating visualizations
 └── README.md                            # Project readme file
-
+```
 ## Analysis Steps
 
-1. **Data Cleaning**: 
+1. **Data Cleaning**
    - Checked for missing values, removed duplicates, and converted categorical columns to factors for analysis.
 
-2. **Exploratory Data Analysis (EDA)**:
+2. **Exploratory Data Analysis (EDA)**
    - Generated summary statistics.
    - Analyzed distributions of priority levels, network types, and industry roles.
 
-3. **Statistical Analysis**:
+3. **Statistical Analysis**
    - Conducted Chi-squared tests to assess relationships between priority levels and network types or industry roles.
 
-4. **Visualization**:
+4. **Visualization**
    - Created bar charts and heatmaps to reveal patterns and associations.
 
-5. **Conclusion**:
+5. **Conclusion**
    - Summarized key findings, including policy recommendations for communications security.
 
 ## Results and Findings
 
-Key insights from the analysis include:
+Insights from the analysis include:
 
 - **High-priority best practices** are more common in public safety and disaster management roles.
 - **Wireless and mobile networks** are heavily associated with high-priority recommendations, reflecting the importance of security in these areas.
@@ -81,6 +81,7 @@ To replicate the analysis:
 
    ```bash
    git clone https://github.com/Ekhwatenge/CSRIC-Best-Practices/tree/main
+   ```
 
 -Ensure that R and the required packages (e.g., dplyr, ggplot2, reshape2) are installed.
 -Run the analysis scripts in the scripts folder sequentially or open and render CSRIC_Analysis_Report.Rmd in RStudio.
